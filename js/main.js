@@ -51,6 +51,38 @@
   onScrollNav();
   window.addEventListener('scroll', onScrollNav, { passive: true });
 
+  /* ── Scrollspy: highlight the nav link for the section in view ── */
+  var spyMap = [
+    { id: 'hero',     href: 'index.html' },
+    { id: 'about',    href: '#about' },
+    { id: 'finishes', href: '#finishes' },
+    { id: 'services', href: '#services' },
+    { id: 'work',     href: '#work' }
+  ];
+  var spyLinks = {};
+  spyMap.forEach(function (s) {
+    spyLinks[s.id] = Array.prototype.slice.call(
+      document.querySelectorAll('.nav-links a[href="' + s.href + '"], .nav-drawer a[href="' + s.href + '"]')
+    );
+  });
+  var spySections = spyMap
+    .map(function (s) { return document.getElementById(s.id); })
+    .filter(Boolean);
+
+  if ('IntersectionObserver' in window && spySections.length) {
+    var setActiveNav = function (id) {
+      Object.keys(spyLinks).forEach(function (key) {
+        spyLinks[key].forEach(function (a) { a.classList.toggle('is-active', key === id); });
+      });
+    };
+    var spyIo = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) setActiveNav(e.target.id);
+      });
+    }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+    spySections.forEach(function (sec) { spyIo.observe(sec); });
+  }
+
   /* ── Scroll reveal ───────────────────────────── */
   const revealEls = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window && revealEls.length) {
@@ -103,6 +135,17 @@
       });
     });
   }
+
+  /* ── Tighter video loops ──────────────────────
+     Native `loop` restarts only after hitting end-of-stream, which can
+     stall for a beat. Resetting a hair early avoids that EOS hitch. */
+  document.querySelectorAll('.work-video, .hero-video').forEach(function (v) {
+    v.addEventListener('timeupdate', function () {
+      if (v.duration && v.currentTime >= v.duration - 0.25) {
+        v.currentTime = 0;
+      }
+    });
+  });
 
   /* ── Scroll-to-top ───────────────────────────── */
   const toTop = document.querySelector('.scroll-top-btn');

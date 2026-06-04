@@ -482,7 +482,7 @@
 .work-tile {
   position: relative;
   display: block;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 4/7;
   overflow: hidden;
   border-radius: var(--radius);
   background: var(--charcoal);
@@ -694,7 +694,7 @@
     flex: 0 0 40%;
     padding: 4.5rem 2.5rem;
   }
-  .map-embed {
+  .map-row .map-embed {
     flex: 1;
     height: auto;
     min-height: 480px;

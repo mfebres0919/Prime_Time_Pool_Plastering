@@ -148,7 +148,7 @@ p {
 .eyebrow {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 0.72rem;
+  font-size: 1rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--red);
@@ -304,7 +304,7 @@ p {
 .announce-track {
   display: flex;
   width: max-content;
-  animation: announce-scroll 32s linear infinite;
+  animation: announce-scroll 100s linear infinite;
 }
 #announce:hover .announce-track { animation-play-state: paused; }
 
@@ -368,11 +368,11 @@ p {
   align-items: center;
   gap: 0.4rem;
   font-family: var(--font-body);
-  font-size: 0.78rem;
-  color: var(--grey-300);
+  font-size: 1rem;
+  color: var(--white);
 }
 .topbar-item svg { width: 14px; height: 14px; color: var(--red-lt); flex-shrink: 0; }
-.topbar-item a { color: var(--grey-300); transition: color var(--transition); }
+.topbar-item a { color: var(--white); transition: color var(--transition); }
 .topbar-item a:hover { color: var(--white); }
 
 .topbar-social { display: flex; align-items: center; gap: 0.75rem; }
