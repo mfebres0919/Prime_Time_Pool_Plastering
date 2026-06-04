@@ -733,3 +733,8 @@ p {
 .scroll-top-btn.is-visible { opacity: 1; pointer-events: all; }
 .scroll-top-btn:hover { background: var(--red-dk); transform: translateY(-3px); }
 .scroll-top-btn svg { width: 18px; height: 18px; }
+
+.tag-white {
+  color: var(--white);
+  text-decoration: underline;
+}
