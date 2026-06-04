@@ -1,0 +1,47 @@
+PRIME TIME POOL PLASTERING — ASSET DROP-IN GUIDE
+=================================================
+Nothing breaks if a file is missing — each slot shows a clean
+charcoal/red placeholder until you add the real asset.
+
+STATUS (2026-06-04): hero + about videos downloaded; the 10 photos you
+uploaded (website-imgs-1…10.png) are now wired across the hero poster,
+about poster, finish cards, service cards, "Our Work" tiles and the
+quote-section background. Swap any of them anytime — see slots below.
+
+NEEDED FOR THE FOUNDATION (hero) — drop these in first:
+  videos/hero.mp4 .............. background video for the hero
+                                 (their "process" footage works great —
+                                  muted, autoplays, loops)
+  images/hero-poster.jpg ....... still frame shown before the video
+                                 loads / on slow connections / on phones
+                                 with reduced-motion. Use a nice pool shot.
+
+NEEDED SOON (slots already wired in the page):
+  images/logo.png .............. swaps the "PrimeTime" text logo in the nav
+  videos/about.mp4 ............. homeowner/about video (About section).
+  images/about-poster.jpg ...... still frame for the About video
+
+  FINISHES — back-of-card "finished pool" photos (fronts are CSS color
+  swatches, so they already look good without images):
+    images/pool-plaster.jpg     (White Plaster)
+    images/pool-frenchgray.jpg  (French Gray)
+    images/pool-quartz.jpg      (Blue Quartz)
+    images/pool-pebble.jpg      (Pebble Tahoe)
+    images/pool-caribbean.jpg   (Caribbean)
+    images/pool-blackpearl.jpg  (Black Pearl)
+  (Want different finishes? Tell me the names/colors and I'll relabel.)
+
+  OUR WORK — placeholder tiles until the live IG feed is connected:
+    images/work-1.jpg … work-4.jpg
+
+LATER:
+  Instagram — for the "Our Work" live feed, sign up at behold.so
+  (or lightwidget.com), connect the IG account, and paste the embed
+  snippet where the #work section placeholder is. Until then I'll
+  scaffold it with a few of their clips.
+
+BRAND / CONTACT — update these placeholders in index.html when known:
+  • Phone:  (909) 000-0000   → real number
+  • Email:  info@primetimepoolplastering.com → real address
+  • Social: Instagram / Facebook href="#" → real profile URLs
+  • City:   Riverside, CA / Inland Empire (already set)
