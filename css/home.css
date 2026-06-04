@@ -216,13 +216,20 @@
 }
 
 .about-media { position: relative; }
-.about-video {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  background: var(--charcoal);
+/* Wrapper does the rounding/cropping so the <video> stays "clean".
+   (iOS Safari disables native video controls when object-fit / border-radius
+    are applied to the <video> element itself — so they live here instead.) */
+.about-video-wrap {
+  position: relative;
   border-radius: var(--radius-lg);
+  overflow: hidden;
   box-shadow: var(--shadow-lg);
+  background: var(--charcoal);
+}
+.about-video {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 /* sits BELOW the video so it never blocks the video controls */
 .about-badge {
