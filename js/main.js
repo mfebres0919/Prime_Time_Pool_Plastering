@@ -136,10 +136,33 @@
     });
   }
 
-  /* ── Tighter video loops ──────────────────────
-     Native `loop` restarts only after hitting end-of-stream, which can
-     stall for a beat. Resetting a hair early avoids that EOS hitch. */
-  document.querySelectorAll('.work-video, .hero-video').forEach(function (v) {
+  /* ── Background videos: force autoplay + tighter loops ──────────
+     Mobile Safari/Chrome block autoplay unless the muted *property*
+     (not just the attribute) is set, and often need a JS play() nudge.
+     The loop reset a hair early avoids the end-of-stream stall. */
+  document.querySelectorAll('.hero-video, .work-video').forEach(function (v) {
+    v.muted = true;                      // set the property, not just the attribute
+    v.setAttribute('playsinline', '');
+    v.setAttribute('webkit-playsinline', '');
+
+    var tryPlay = function () {
+      var p = v.play();
+      if (p && typeof p.catch === 'function') p.catch(function () {});
+    };
+    tryPlay();
+    // retry once on the first user gesture if the browser still blocked it
+    ['touchstart', 'pointerdown', 'scroll'].forEach(function (evt) {
+      window.addEventListener(evt, tryPlay, { once: true, passive: true });
+    });
+    // and when it scrolls into view
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries, obs) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { tryPlay(); }
+        });
+      }, { threshold: 0.25 }).observe(v);
+    }
+
     v.addEventListener('timeupdate', function () {
       if (v.duration && v.currentTime >= v.duration - 0.25) {
         v.currentTime = 0;
